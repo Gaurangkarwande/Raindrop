@@ -4,11 +4,11 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-P_list = np.load('../processed_data/P_list.npy', allow_pickle=True)
-arr_outcomes = np.load('../processed_data/arr_outcomes.npy', allow_pickle=True)
+P_list = np.load('/home/gaurang/Raindrop/P12data/processed_data/P_list.npy', allow_pickle=True)
+arr_outcomes = np.load('/home/gaurang/Raindrop/P12data/processed_data/arr_outcomes.npy', allow_pickle=True)
 
-ts_params = np.load('../processed_data/ts_params.npy', allow_pickle=True)
-static_params = np.load('../processed_data/static_params.npy', allow_pickle=True)
+ts_params = np.load('/home/gaurang/Raindrop/P12data/processed_data/ts_params.npy', allow_pickle=True)
+static_params = np.load('/home/gaurang/Raindrop/P12data/processed_data/static_params.npy', allow_pickle=True)
 
 print('number of samples: ', len(P_list))
 print(len(ts_params), ts_params)
@@ -29,7 +29,7 @@ for ind in range(n):  # for each patient
 print('max unique time series length:', np.max(len_ts))
 
 extended_static_list = ['Age', 'Gender=0', 'Gender=1', 'Height', 'ICUType=1', 'ICUType=2', 'ICUType=3', 'ICUType=4', 'Weight']
-np.save('../processed_data/extended_static_params.npy', extended_static_list)
+np.save('/home/gaurang/Raindrop/P12data/processed_data/extended_static_params.npy', extended_static_list)
 
 """Group all patient time series into arrays"""
 n = len(P_list)
@@ -89,6 +89,6 @@ for ind in range(n):
     PTdict_list.append(my_dict)
 
 print(len(PTdict_list))
-np.save('../processed_data/PTdict_list.npy', PTdict_list)
+np.save('/home/gaurang/Raindrop/P12data/processed_data/PTdict_list.npy', PTdict_list)
 print('PTdict_list.npy saved', PTdict_list[0].keys())
 exit(-1)

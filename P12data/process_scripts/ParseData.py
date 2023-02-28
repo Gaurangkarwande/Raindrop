@@ -5,11 +5,11 @@ import matplotlib.pyplot as plt
 import os
 
 
-df_outcomes_a = pd.read_csv('../rawdata/Outcomes-a.txt', sep=",", header=0,
+df_outcomes_a = pd.read_csv('/home/gaurang/Raindrop/P12data/rawdata/Outcomes-a.txt', sep=",", header=0,
                             names=["RecordID","SAPS-I","SOFA","Length_of_stay","Survival","In-hospital_death"])
-df_outcomes_b = pd.read_csv('../rawdata/Outcomes-b.txt', sep=",", header=0,
+df_outcomes_b = pd.read_csv('/home/gaurang/Raindrop/P12data/rawdata/Outcomes-b.txt', sep=",", header=0,
                             names=["RecordID","SAPS-I","SOFA","Length_of_stay","Survival","In-hospital_death"])
-df_outcomes_c = pd.read_csv('../rawdata/Outcomes-c.txt', sep=",", header=0,
+df_outcomes_c = pd.read_csv('/home/gaurang/Raindrop/P12data/rawdata/Outcomes-c.txt', sep=",", header=0,
                             names=["RecordID","SAPS-I","SOFA","Length_of_stay","Survival","In-hospital_death"])
 print(df_outcomes_a.head(n=5))
 print(df_outcomes_b.head(n=5))
@@ -34,7 +34,7 @@ print("Percentage of in-hosp death: %.2f%%" % (np.sum(y_inhospdeath)/n*100))
 print(y_inhospdeath.shape)
 
 # Store outcomes in npy format
-np.save('../processed_data/arr_outcomes.npy', arr_outcomes)
+np.save('/home/gaurang/Raindrop/P12data/processed_data/arr_outcomes.npy', arr_outcomes)
 print('arr_outcomes.npy saved')
 
 # arr_outcomes = np.load('phy12_outcomes.npy')
@@ -59,9 +59,9 @@ def extract_unq_params(path):
     param_list = list(np.unique(np.array(params_all)))
     return param_list
 
-param_list_a = extract_unq_params('../rawdata/set-a/')
-param_list_b = extract_unq_params('../rawdata/set-b/')
-param_list_c = extract_unq_params('../rawdata/set-c/')
+param_list_a = extract_unq_params('/home/gaurang/Raindrop/P12data/rawdata/set-a/set-a/')
+param_list_b = extract_unq_params('/home/gaurang/Raindrop/P12data/rawdata/set-b/set-b/')
+param_list_c = extract_unq_params('/home/gaurang/Raindrop/P12data/rawdata/set-c/set-c/')
 
 param_list = param_list_a + param_list_b + param_list_c
 param_list = list(np.unique(param_list))
@@ -77,11 +77,11 @@ print("Parameters: ", param_list)
 print("Number of total parameters:", len(param_list))
 
 # save variable names
-np.save('../processed_data/ts_params.npy', param_list)
+np.save('/home/gaurang/Raindrop/P12data/processed_data/ts_params.npy', param_list)
 print('ts_params.npy: the names of 36 variables')
 
 static_param_list = ['Age','Gender','Height','ICUType','Weight']
-np.save('../processed_data/static_params.npy', static_param_list)
+np.save('/home/gaurang/Raindrop/P12data/processed_data/static_params.npy', static_param_list)
 print('save names of static descriptors: static_params.npy')
 
 
@@ -122,11 +122,11 @@ def parse_all(path):
     return P_list
 
 # Merge lists of patients into master list
-p_list_a = parse_all('../rawdata/set-a/')
-p_list_b = parse_all('../rawdata/set-b/')
-p_list_c = parse_all('../rawdata/set-c/')
+p_list_a = parse_all('/home/gaurang/Raindrop/P12data/rawdata/set-a/set-a/')
+p_list_b = parse_all('/home/gaurang/Raindrop/P12data/rawdata/set-b/set-b/')
+p_list_c = parse_all('/home/gaurang/Raindrop/P12data/rawdata/set-c/set-c/')
 P_list = p_list_a + p_list_b + p_list_c
 print('Length of P_list', len(P_list))
 
-np.save('../processed_data/P_list.npy', P_list)
+np.save('/home/gaurang/Raindrop/P12data/processed_data/P_list.npy', P_list)
 print('P_list.npy saved')

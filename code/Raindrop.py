@@ -71,19 +71,19 @@ args, unknown = parser.parse_known_args()
 
 
 arch = 'raindrop'
-model_path = '../models/'
+model_path = '/home/gaurang/Raindrop/models'
 
 dataset = args.dataset
 print('Dataset used: ', dataset)
 
 if dataset == 'P12':
-    base_path = '../P12data'
+    base_path = '/home/gaurang/Raindrop/P12data'
 elif dataset == 'P19':
-    base_path = '../P19data'
+    base_path = '/home/gaurang/Raindrop/P19data'
 elif dataset == 'eICU':
-    base_path = '../eICUdata'
+    base_path = '/home/gaurang/Raindrop/eICUdata'
 elif dataset == 'PAM':
-    base_path = '../PAMdata'
+    base_path = '/home/gaurang/Raindrop/PAMdata'
 
 baseline = False  # always False for Raindrop
 split = args.splittype  # possible values: 'random', 'age', 'gender'
@@ -176,7 +176,7 @@ for missing_ratio in missing_ratios:
         Ptrain, Pval, Ptest, ytrain, yval, ytest = get_data_split(base_path, split_path, split_type=split, reverse=reverse,
                                                                   baseline=baseline, dataset=dataset,
                                                                   predictive_label=args.predictive_label)
-        print(len(Ptrain), len(Pval), len(Ptest), len(ytrain), len(yval), len(ytest))
+        print(Ptrain.shape, Pval.shape, Ptest.shape, len(ytrain), len(yval), len(ytest))
 
         if dataset == 'P12' or dataset == 'P19' or dataset == 'eICU':
             T, F = Ptrain[0]['arr'].shape

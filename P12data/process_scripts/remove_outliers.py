@@ -1,8 +1,8 @@
 import numpy as np
 
 """Remove 12 patients at blacklist"""
-PTdict_list = np.load('../processed_data/PTdict_list.npy', allow_pickle=True)
-arr_outcomes = np.load('../processed_data/arr_outcomes.npy', allow_pickle=True)
+PTdict_list = np.load('/home/gaurang/Raindrop/P12data/processed_data/PTdict_list.npy', allow_pickle=True)
+arr_outcomes = np.load('/home/gaurang/Raindrop/P12data/processed_data/arr_outcomes.npy', allow_pickle=True)
 
 
 # remove blacklist patients
@@ -19,5 +19,5 @@ while i<n:
     i += 1
 print(len(PTdict_list), arr_outcomes.shape)
 
-np.save('../processed_data/PTdict_list.npy', PTdict_list)
-np.save('../processed_data/arr_outcomes.npy', arr_outcomes)
+np.save('/home/gaurang/Raindrop/P12data/processed_data/PTdict_list.npy', PTdict_list)
+np.save('/home/gaurang/Raindrop/P12data/processed_data/arr_outcomes.npy', arr_outcomes)
